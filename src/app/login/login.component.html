@@ -1,4 +1,4 @@
-<ion-content [scrollEvents]="true">
+<ion-content class="ion-padding">
   <h2>Welcome to Grocery App</h2>
   <ion-img src="../../assets/images/login/LoginBanner.jpg" alt="Login Banner"></ion-img>
 
@@ -10,10 +10,11 @@
   <div>
     <p>Let's get you started <span>&#8594;</span></p>
     <ion-item>
-      <ion-input label="Mobile number" labelPlacement="stacked" placeholder="Enter mobile number"></ion-input>
+      <ion-input label="Mobile number" labelPlacement="stacked" placeholder="Enter mobile number"
+        [formControl]="mobileNumberControl"></ion-input>
     </ion-item>
-    <ion-button shape="round">Get OTP</ion-button>
+    <ion-button shape="round" (click)="getOTP()" [disabled]="!mobileNumberControl.valid">Get OTP</ion-button>
   </div>
 
-  <p>Skip</p>
+  <p><a routerLink="/home">Skip</a></p>
 </ion-content>

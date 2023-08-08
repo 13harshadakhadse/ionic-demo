@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Ionic
@@ -17,4 +17,97 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
-</ion-content>
+</ion-content> -->
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col offset="2" size="1">
+            <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+          </ion-col>
+          <ion-col size="7">
+            <ion-title class="ion-no-padding">User@9819976874</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-no-padding">
+    <ion-grid>
+      <ng-container *ngFor="let menu of sideMenus">
+        <!-- <ion-row>
+        <ion-col offset="2" size="1">
+          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+        </ion-col>
+        <ion-col size="7">
+          <ion-title class="ion-no-padding">My Addresses</ion-title>
+        </ion-col>
+      </ion-row> -->
+        <ion-row>
+          <ion-col offset="2" size="1">
+            <ion-img [src]="menu.image" style="width: 20px; height: 20px;"></ion-img>
+          </ion-col>
+          <ion-col size="7">
+            <ion-title class="ion-no-padding">{{menu?.name}}</ion-title>
+          </ion-col>
+        </ion-row>
+        <hr *ngIf="menu?.isShowBottomBorder" style="background-color: black;">
+        <!-- <ion-row>
+        <ion-col offset="2" size="1">
+          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+        </ion-col>
+        <ion-col size="7">
+          <ion-title class="ion-no-padding">Customer Support</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col offset="2" size="1">
+          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+        </ion-col>
+        <ion-col size="7">
+          <ion-title class="ion-no-padding">Logout</ion-title>
+        </ion-col>
+      </ion-row> -->
+      </ng-container>
+    </ion-grid>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start" *ngIf="userDetail?.isLoggedIn">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="text-center">Grocery App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-searchbar placeholder="Search products" [debounce]="1000" (ionInput)="searchInput($event)"></ion-searchbar>
+    <swiper-container class="banner-slides" [modules]="swiperModules" [loop]="true" [autoplay]="true"
+      [pagination]="true">
+      <swiper-slide *ngFor="let slide of slideImages">
+        <ion-img [src]="slide.image"></ion-img>
+      </swiper-slide>
+
+    </swiper-container>
+    <div>
+      <h4>All categories</h4>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let cat of categories" size="4" size-md="3">
+            <ion-card class="ion-no-margin">
+              <ion-card-content class="ion-no-padding text-center">
+                <div>
+                  <ion-img [src]="cat.image"></ion-img>
+                </div>
+                <p>{{cat.label}}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+</div>
