@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonicSlides } from '@ionic/angular';
 import { forkJoin, map } from 'rxjs';
 import { SideMenu, User } from 'src/models/common.model';
@@ -26,7 +27,9 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(private _userService: UserService,
     private _menuService: MenuService,
     private _categoryService: CategoryService,
-    private _commonService: CommonService) {
+    private _commonService: CommonService,
+    private _route: Router,
+    private _activated: ActivatedRoute) {
     this.sub.sink = this._userService.userDetail$.subscribe(x => {
       this.userDetail = x
     });
@@ -53,20 +56,15 @@ export class HomePage implements OnInit, OnDestroy {
       () => {
         this.categoriesCopy = this._commonService.copyObject(this.categories);
       });
-
-    // this.sink.sink = this._menuService.getSideMenus(this.userDetail?.isAdmin).subscribe(menus => {
-    //   this.sideMenus = menus;
-    // });
-
-    // this.sink.sink = this._categoryService.getCategories().subscribe(cat => {
-    //   this.categories = cat;
-    // });
   }
 
   searchInput(event: any) {
     const searchText = event.target.value.toLowerCase();
     this.categories = (!!searchText) ? this.categoriesCopy.filter((d) => d.toLowerCase().indexOf(searchText) > -1) : this.categories;
-    console.log(searchText);
+  }
+
+  routeToCategoryProducts() {
+    this._route.navigate(['category-product'], { relativeTo: this._activated })
   }
 
   ngOnDestroy(): void {
