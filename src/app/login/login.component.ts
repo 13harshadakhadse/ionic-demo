@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PATTERN_CONSTANT } from 'src/constant/string.constant';
+import { UserService } from 'src/service/user.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +12,30 @@ import { PATTERN_CONSTANT } from 'src/constant/string.constant';
 })
 export class LoginComponent  implements OnInit, OnDestroy {
 
-  mobileNumberControl: any;
-  constructor(private route: Router) {
-    this.mobileNumberControl = new FormControl('', [Validators.required, Validators.pattern(PATTERN_CONSTANT.MobileNumber)]);
+  private sub = new SubSink();
+  mobileNumberCL: FormControl;
+
+  constructor(private route: Router, 
+              private _userService: UserService) {
+    this.mobileNumberCL = new FormControl('', [Validators.required, Validators.pattern(PATTERN_CONSTANT.MobileNumber)]);
   }
 
   ngOnInit() {}
 
   getOTP() {
-    if (this.mobileNumberControl.valid) {
-      this.route.navigate(['/otp']);
+    if (this.mobileNumberCL.valid) {
+      this.sub.sink = this._userService.getUserDetail(this.mobileNumberCL.value).subscribe(user => {
+        this._userService.userDetail$.next(user);
+      },
+      () => {},
+      () => {
+        this.route.navigate(['/otp']);
+      });
     }
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
 }

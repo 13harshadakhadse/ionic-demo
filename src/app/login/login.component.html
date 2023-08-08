@@ -11,9 +11,9 @@
     <p>Let's get you started <span>&#8594;</span></p>
     <ion-item>
       <ion-input label="Mobile number" labelPlacement="stacked" placeholder="Enter mobile number"
-        [formControl]="mobileNumberControl"></ion-input>
+        [formControl]="mobileNumberCL"></ion-input>
     </ion-item>
-    <ion-button shape="round" (click)="getOTP()" [disabled]="!mobileNumberControl.valid">Get OTP</ion-button>
+    <ion-button shape="round" (click)="getOTP()" [disabled]="!mobileNumberCL.valid">Get OTP</ion-button>
   </div>
 
   <p><a routerLink="/home">Skip</a></p>

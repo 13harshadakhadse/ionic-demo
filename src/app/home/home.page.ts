@@ -1,7 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IonicSlides } from '@ionic/angular';
-import { User } from 'src/models/common.model';
+import { forkJoin, map } from 'rxjs';
+import { SideMenu, User } from 'src/models/common.model';
+import { CategoryService } from 'src/service/category.service';
+import { CommonService } from 'src/service/common.service';
+import { MenuService } from 'src/service/menu.service';
 import { UserService } from 'src/service/user.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-home',
@@ -10,53 +15,62 @@ import { UserService } from 'src/service/user.service';
 })
 export class HomePage implements OnInit, OnDestroy {
 
+  private sub = new SubSink();
   swiperModules = [IonicSlides];
   userDetail: User | null = null;
-  slideImages: any[] = [
-    { image: "../../assets/images/login/LoginBanner.jpg" },
-    { image: "../../assets/images/home/banner/Carousal.jpg" },
-    { image: "../../assets/images/login/LoginBanner.jpg" }
-  ];
+  sideMenus: SideMenu[] = [];
+  categories: any[] = [];
+  categoriesCopy: any[] = [];
+  sliders: any[] = [];
 
-  categories: any[] = [
-    { image: '../../assets/images/home/categories/Vegetables.png', label: 'Vegetables' },
-    { image: '../../assets/images/home/categories/ColdDrink.png', label: 'Cold Drinks & Juices' },
-    { image: '../../assets/images/home/categories/Fruits.png', label: 'Fruits' },
-    { image: '../../assets/images/home/categories/FrozenFood.png', label: 'Instant & Frozen Food' },
-    { image: '../../assets/images/home/categories/Dairy.png', label: 'Dairy' },
-    { image: '../../assets/images/home/categories/Masala.png', label: 'Masala & Oil' },
-    { image: '../../assets/images/home/categories/Snacks.png', label: 'Snacks' },
-    { image: 'https://ionicframework.com/docs/img/demos/card-media.png', label: 'Dummy' },
-    { image: 'https://ionicframework.com/docs/img/demos/card-media.png', label: 'Dummy' }
-  ];
-
-  sideMenus: any [] = [
-    { image: '../../assets/images/home/sideMenu/customerDetails.png', name: 'Customer Details', routerLink: '', isShowBottomBorder: false },
-    { image: '../../assets/images/home/sideMenu/products.png', name: 'Products', routerLink: '', isShowBottomBorder: false },
-    { image: '../../assets/images/home/sideMenu/myAddresses.png', name: 'My Addresses', routerLink: '', isShowBottomBorder: false },
-    { image: '../../assets/images/home/sideMenu/myOrders.png', name: 'My Orders', routerLink: '', isShowBottomBorder: true },
-    { image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Support', routerLink: '', isShowBottomBorder: false },
-    // { image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Help', routerLink: '', isShowBottomBorder: false },
-    { image: '../../assets/images/home/sideMenu/logout.png', name: 'Logout', routerLink: '', isShowBottomBorder: false }
-  ];
-
-  constructor(private _userService: UserService) {
-    this.userDetail = this._userService.userDetail;
-    // if (this.userDetail)
-    // this.userDetail.isLoggedIn = true;
+  constructor(private _userService: UserService,
+    private _menuService: MenuService,
+    private _categoryService: CategoryService,
+    private _commonService: CommonService) {
+    this.sub.sink = this._userService.userDetail$.subscribe(x => {
+      this.userDetail = x
+    });
   }
 
   ngOnInit(): void {
+
+    this.sub.sink = forkJoin([
+      this._menuService.getSideMenus(this.userDetail?.isAdmin),
+      this._categoryService.getCategories(),
+      this._categoryService.getSliders()
+    ]).pipe(
+      map(([menus, cat, slider]) => ({
+        menus,
+        cat,
+        slider
+      }))
+    ).subscribe(x => {
+      this.sideMenus = x.menus;
+      this.categories = x.cat;
+      this.sliders = x.slider;
+    },
+      () => {},
+      () => {
+        this.categoriesCopy = this._commonService.copyObject(this.categories);
+      });
+
+    // this.sink.sink = this._menuService.getSideMenus(this.userDetail?.isAdmin).subscribe(menus => {
+    //   this.sideMenus = menus;
+    // });
+
+    // this.sink.sink = this._categoryService.getCategories().subscribe(cat => {
+    //   this.categories = cat;
+    // });
   }
 
   searchInput(event: any) {
     const searchText = event.target.value.toLowerCase();
-    // this.results = this.data.filter((d) => d.toLowerCase().indexOf(query) > -1);
+    this.categories = (!!searchText) ? this.categoriesCopy.filter((d) => d.toLowerCase().indexOf(searchText) > -1) : this.categories;
     console.log(searchText);
   }
 
-
   ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

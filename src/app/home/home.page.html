@@ -87,7 +87,7 @@
     <ion-searchbar placeholder="Search products" [debounce]="1000" (ionInput)="searchInput($event)"></ion-searchbar>
     <swiper-container class="banner-slides" [modules]="swiperModules" [loop]="true" [autoplay]="true"
       [pagination]="true">
-      <swiper-slide *ngFor="let slide of slideImages">
+      <swiper-slide *ngFor="let slide of sliders">
         <ion-img [src]="slide.image"></ion-img>
       </swiper-slide>
 
@@ -102,7 +102,7 @@
                 <div>
                   <ion-img [src]="cat.image"></ion-img>
                 </div>
-                <p>{{cat.label}}</p>
+                <p>{{cat.name}}</p>
               </ion-card-content>
             </ion-card>
           </ion-col>
