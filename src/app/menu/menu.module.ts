@@ -9,6 +9,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 // import { CdkTableModule } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { MatSortModule } from '@angular/material/sort';
     // CdkTableModule,
     MatSortModule
   ],
-  declarations: [MenuComponent, CustomerDetailsComponent],
+  declarations: [MenuComponent, CustomerDetailsComponent, LogoutComponent],
   schemas: []
 })
 export class MenuModule {}

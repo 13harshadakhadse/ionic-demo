@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { GridHeaders } from 'src/models/common.model';
 import { CustomerDetailsService } from 'src/service/customer.details.service';
 import { SubSink } from 'subsink';
@@ -64,7 +65,7 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy, AfterViewIni
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    
+
     // console.log('this.paginator', this.paginator);
     // this.paginator.page.subscribe(x => console.log(x));
   }

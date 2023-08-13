@@ -29,6 +29,7 @@ export class LoginComponent  implements OnInit, OnDestroy {
       },
       () => {},
       () => {
+        this.mobileNumberCL.reset();
         this.route.navigate(['/otp']);
       });
     }

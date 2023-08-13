@@ -18,7 +18,7 @@ export class MenuService {
             { id: '0', image: '../../assets/images/home/sideMenu/myOrders.png', name: 'My Orders', routerLink: '', isShowBottomBorder: true, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             { id: '0', image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Support', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             // { id: '0', image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Help', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
-            { id: '0', image: '../../assets/images/home/sideMenu/logout.png', name: 'Logout', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() }
+            { id: '0', image: '../../assets/images/home/sideMenu/logout.png', name: 'Logout', routerLink: '/menu/logout', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() }
         ]);
 
         // return this.http.get<Array<SideMenu>>(`menu/getSideMenus/${isAdmin}`);

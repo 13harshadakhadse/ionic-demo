@@ -53,7 +53,7 @@ export class HomePage implements OnInit, OnDestroy {
       this.categories = x.cat;
       this.sliders = x.slider;
     },
-      () => {},
+      () => { },
       () => {
         this.categoriesCopy = this._commonService.copyObject(this.categories);
       });
@@ -70,7 +70,12 @@ export class HomePage implements OnInit, OnDestroy {
 
   routeToMenu(menu: SideMenu) {
     // console.log(menu);
-    this._route.navigate([menu.routerLink]);
+    if (menu.name === 'Logout') {
+      this._route.navigate([menu.routerLink], { queryParams: { page: 'logout' } });
+    }
+    else {
+      this._route.navigate([menu.routerLink]);
+    }
   }
 
   ngOnDestroy(): void {
