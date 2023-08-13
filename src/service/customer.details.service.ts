@@ -21,13 +21,13 @@ export class CustomerDetailsService {
                 { id: '3', columnName: 'isActive', displayName: 'Status', isSort: true, isFilter: false }
             ],
             gridData: [
-                { id: '1', mobileNumber: 'Hydrogen', isActive: true },
-                { id: '2', mobileNumber: 'Helium', isActive: false },
-                { id: '3', mobileNumber: 'Lithium', isActive: false },
-                { id: '4', mobileNumber: 'Beryllium', isActive: true },
-                { id: '5', mobileNumber: 'Boron', isActive: true },
-                { id: '6', mobileNumber: 'Carbon', isActive: true },
-                { id: '7', mobileNumber: 'Nitrogen', isActive: true }
+                { id: '1', mobileNumber: '9819976774', isActive: true },
+                { id: '2', mobileNumber: '9819976871', isActive: false },
+                { id: '3', mobileNumber: '9819976869', isActive: false },
+                { id: '4', mobileNumber: '9819976872', isActive: true },
+                { id: '5', mobileNumber: '9819976873', isActive: true },
+                { id: '6', mobileNumber: '9819976879', isActive: true },
+                { id: '7', mobileNumber: '9819976870', isActive: true }
             ]
         });
 

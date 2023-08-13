@@ -1,5 +1,5 @@
 <div class="ion-no-padding">
-  <h2>Customer Details</h2>
+  <h4>Customer Details</h4>
 
   <table *ngIf="isLoad" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnName">
