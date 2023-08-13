@@ -32,3 +32,27 @@ export type Slider = {
     createdDate: string;
     updatedDate: string | null;
 }
+
+export type GridHeaders = {
+    id: string;
+    displayName: string;
+    columnName: string;
+    isSort: boolean;
+    isFilter: boolean;
+    // colSize: string | null;
+    // colSpan: string | null;
+    // cssClass: string | null;
+    // cssStyle: string | null;
+}
+
+// export type GridData = {
+//     id: string;
+//     column: string;
+//     value: string; 
+// }
+
+export type GridDetails = {
+    gridName: string;
+    gridHeaders: GridHeaders[],
+    gridData: any
+}

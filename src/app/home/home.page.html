@@ -45,7 +45,7 @@
           <ion-title class="ion-no-padding">My Addresses</ion-title>
         </ion-col>
       </ion-row> -->
-        <ion-row>
+        <ion-row (click)="routeToMenu(menu)">
           <ion-col offset="2" size="1">
             <ion-img [src]="menu.image" style="width: 20px; height: 20px;"></ion-img>
           </ion-col>
