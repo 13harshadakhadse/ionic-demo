@@ -1,0 +1,67 @@
+<div>
+  <h4 *ngIf="!isCalledFromCustomerDetail">My Orders</h4>
+  <ion-card class="ion-no-margin">
+    <ion-card-content [ngClass]="{'ion-no-padding': isCalledFromCustomerDetail}">
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="primary">
+            <ion-label> Orders </ion-label>
+          </ion-item-divider>
+
+          <ng-container *ngFor="let ord of data?.orders; trackBy: trackByOrder; let i=index; let last=last;">
+            <ion-item *ngIf="!last" id="ord_{{i}}">
+              <ion-label class="ion-text-wrap">
+                <ion-grid class="ion-no-padding">
+                  <ion-row>
+                    <ion-col>
+                      <ion-text color="primary">
+                        <p>Delivered</p>
+                      </ion-text>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="10">
+                      <h6>{{ord?.orderString}}</h6>
+                    </ion-col>
+                    <ion-col size="2">
+                      <p>{{ord?.totalPay}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <!-- <h6>{{ord?.order}}</h6> -->
+                <p>{{ord?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="last" lines="none" id="ord_{{i}}">
+              <ion-label class="ion-text-wrap">
+                <ion-grid class="ion-no-padding">
+                  <ion-row>
+                    <ion-col>
+                      <ion-text color="primary">
+                        <p>Delivered</p>
+                      </ion-text>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="10">
+                      <h6>{{ord?.orderString}}</h6>
+                    </ion-col>
+                    <ion-col size="2">
+                      <p>{{ord?.totalPay}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <p>{{ord?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="!!data && data.totalOrders > 2 && last && !isLoadAllOrders" lines="none">
+              <ion-text color="primary">
+                <p (click)="loadMoreOrders()">Load more</p>
+              </ion-text>
+            </ion-item>
+          </ng-container>
+        </ion-item-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</div>

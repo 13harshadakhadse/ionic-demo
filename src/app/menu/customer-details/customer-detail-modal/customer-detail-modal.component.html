@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="isShowClose" slot="start">
+      <ion-button (click)="cancel()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>{{headerText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card class="ion-no-margin">
+    <ion-card-header>
+      <ion-card-title>{{data?.customerName}}</ion-card-title>
+      <ion-card-subtitle>Customer Detail</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <!-- <ion-item-group>
+          <ion-item-divider>
+            <ion-label> Addresses </ion-label>
+          </ion-item-divider>
+      
+          <ng-container *ngFor="let add of data?.addresses; let last=last;">
+            <ion-item *ngIf="!last">
+              <ion-label class="ion-text-wrap"> 
+                <h6>{{add?.address}}</h6> 
+                <p>{{add?.updatedDate | date }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="last" lines="none">
+              <ion-label class="ion-text-wrap"> 
+                <h6>{{add?.address}}</h6> 
+                <p>{{add?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="data?.totalAddresses > 2 && last && !isLoadAllAddresses">
+              <ion-text color="primary">
+                <p (click)="loadMoreAddresses()">Load more</p>
+              </ion-text>
+            </ion-item>
+          </ng-container>
+          
+        </ion-item-group> -->
+        <app-address [isCalledFromCustomerDetail]=true></app-address>
+        <app-order [isCalledFromCustomerDetail]=true></app-order>
+      
+        <!-- <ion-item-group>
+          <ion-item-divider>
+            <ion-label> Orders </ion-label>
+          </ion-item-divider>
+      
+          <ng-container *ngFor="let ord of data?.orders; let last=last;">
+            <ion-item *ngIf="!last">
+              <ion-label class="ion-text-wrap"> 
+                <h6>{{ord?.order}}</h6> 
+                <p>{{ord?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="last" lines="none">
+              <ion-label class="ion-text-wrap"> 
+                <h6>{{ord?.order}}</h6> 
+                <p>{{ord?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="data?.totalOrders > 2 && last && !isLoadAllOrders">
+              <ion-text color="primary">
+                <p (click)="loadMoreOrders()">Load more</p>
+              </ion-text>
+            </ion-item>
+          </ng-container>
+        </ion-item-group> -->
+      </ion-list>
+      <ion-text>Total Billing: {{data?.totalBilling}}</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

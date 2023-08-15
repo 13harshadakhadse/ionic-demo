@@ -78,6 +78,18 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
+  trackBySideMenu(index: number, item: any) {
+    return item.id;
+  }
+
+  trackBySlider(index: number, item: any) {
+    return item.id;
+  }
+
+  trackByCategory(index: number, item: any) {
+    return item.id;
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

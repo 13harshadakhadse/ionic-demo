@@ -36,7 +36,7 @@
   </ion-header>
   <ion-content class="ion-no-padding">
     <ion-grid>
-      <ng-container *ngFor="let menu of sideMenus">
+      <ng-container *ngFor="let menu of sideMenus; trackBy: trackBySideMenu">
         <!-- <ion-row>
         <ion-col offset="2" size="1">
           <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
@@ -87,7 +87,7 @@
     <ion-searchbar placeholder="Search products" [debounce]="1000" (ionInput)="searchInput($event)"></ion-searchbar>
     <swiper-container class="banner-slides" [modules]="swiperModules" [loop]="true" [autoplay]="true"
       [pagination]="true">
-      <swiper-slide *ngFor="let slide of sliders">
+      <swiper-slide *ngFor="let slide of sliders; trackBy: trackBySlider">
         <ion-img [src]="slide.image"></ion-img>
       </swiper-slide>
 
@@ -96,7 +96,7 @@
       <h4>All categories</h4>
       <ion-grid>
         <ion-row>
-          <ion-col *ngFor="let cat of categories" size="4" size-md="3">
+          <ion-col *ngFor="let cat of categories; trackBy: trackByCategory" size="4" size-md="3">
             <ion-card class="ion-no-margin" (click)="routeToCategoryProducts()">
               <ion-card-content class="ion-no-padding text-center">
                 <div>

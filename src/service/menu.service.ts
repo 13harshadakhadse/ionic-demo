@@ -14,8 +14,9 @@ export class MenuService {
         return of<Array<SideMenu>>([
             { id: '0', image: '../../assets/images/home/sideMenu/customerDetails.png', name: 'Customer Details', routerLink: '/menu/customer-details', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             { id: '0', image: '../../assets/images/home/sideMenu/products.png', name: 'Products', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
-            { id: '0', image: '../../assets/images/home/sideMenu/myAddresses.png', name: 'My Addresses', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
-            { id: '0', image: '../../assets/images/home/sideMenu/myOrders.png', name: 'My Orders', routerLink: '', isShowBottomBorder: true, createdDate: new Date().toString(), updatedDate: new Date().toString() },
+            { id: '0', image: '../../assets/images/home/sideMenu/myAddresses.png', name: 'My Addresses', routerLink: '/menu/address', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
+            { id: '0', image: '../../assets/images/home/sideMenu/myOrders.png', name: 'My Orders', routerLink: '/menu/order', isShowBottomBorder: true, createdDate: new Date().toString(), updatedDate: new Date().toString() },
+            // { id: '0', image: '../../assets/images/home/sideMenu/myOrders.png', name: 'Orders', routerLink: '/menu/order', isShowBottomBorder: true, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             { id: '0', image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Support', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             // { id: '0', image: '../../assets/images/home/sideMenu/customerSupport.png', name: 'Customer Help', routerLink: '', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() },
             { id: '0', image: '../../assets/images/home/sideMenu/logout.png', name: 'Logout', routerLink: '/menu/logout', isShowBottomBorder: false, createdDate: new Date().toString(), updatedDate: new Date().toString() }

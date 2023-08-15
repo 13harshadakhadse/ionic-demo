@@ -3,20 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddressComponent } from './address/address.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MenuComponent,
     children: [
-        {
-            path: 'customer-details',
-            component: CustomerDetailsComponent
-        },
-        {
-            path: 'logout',
-            component: LogoutComponent
-        }
+      {
+        path: 'customer-details',
+        component: CustomerDetailsComponent
+      },
+      {
+        path: 'address',
+        component: AddressComponent
+      },
+      {
+        path: 'order',
+        component: OrderComponent
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent
+      }
     ]
   },
 ];
@@ -25,4 +35,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MenuRoutingModule {}
+export class MenuRoutingModule { }
