@@ -1,6 +1,28 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat.define-palette(mat.$indigo-palette);
+$app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$app-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$app-theme: mat.define-light-theme(( color: ( primary: $app-primary, accent: $app-accent, warn: $app-warn, )));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($app-theme);
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
@@ -203,4 +225,44 @@
         --ion-tab-bar-background: #1f1f1f;
         --ion-card-background: #1e1e1e;
     }
+}
+
+// .md body {
+//     --ion-background-color: #121212;
+//     --ion-background-color-rgb: 18, 18, 18;
+//     --ion-text-color: #ffffff;
+//     --ion-text-color-rgb: 255, 255, 255;
+//     --ion-border-color: #222222;
+//     --ion-color-step-50: #1e1e1e;
+//     --ion-color-step-100: #2a2a2a;
+//     --ion-color-step-150: #363636;
+//     --ion-color-step-200: #414141;
+//     --ion-color-step-250: #4d4d4d;
+//     --ion-color-step-300: #595959;
+//     --ion-color-step-350: #656565;
+//     --ion-color-step-400: #717171;
+//     --ion-color-step-450: #7d7d7d;
+//     --ion-color-step-500: #898989;
+//     --ion-color-step-550: #949494;
+//     --ion-color-step-600: #a0a0a0;
+//     --ion-color-step-650: #acacac;
+//     --ion-color-step-700: #b8b8b8;
+//     --ion-color-step-750: #c4c4c4;
+//     --ion-color-step-800: #d0d0d0;
+//     --ion-color-step-850: #dbdbdb;
+//     --ion-color-step-900: #e7e7e7;
+//     --ion-color-step-950: #f3f3f3;
+//     --ion-item-background: #1e1e1e;
+//     --ion-toolbar-background: #1f1f1f;
+//     --ion-tab-bar-background: #1f1f1f;
+//     --ion-card-background: #1e1e1e;
+// }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
