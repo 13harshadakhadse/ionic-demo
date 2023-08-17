@@ -1,0 +1,49 @@
+$primay:#EE574E;
+.head-title {
+    height: 30px;
+    margin-top: 57px;
+}
+
+.title-th {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.sign-in {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    margin-top: 11px;
+    margin-bottom: 5px;
+}
+
+.ml-35 {
+    margin-left: 35px;
+}
+
+.sign-in-form {
+    width: 90%;
+    margin: 18px;
+    background: #F5F4F4;
+    padding: 12px;
+    margin-top: 26px;
+    p {
+        padding-left: 16px;
+    }
+}
+
+.bg-default {
+    background: #F5F4F4 !important;
+}
+
+ion-input {
+    --placeholder-color: 'hotpink';
+}
+
+ion-input::placeholder {
+    color: red !important;
+    font-size: 12px !important;
+}
