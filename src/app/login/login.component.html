@@ -1,20 +1,27 @@
 <ion-content class="ion-padding">
-  <h2>Welcome to Grocery App</h2>
-  <ion-img src="../../assets/images/login/LoginBanner.jpg" alt="Login Banner"></ion-img>
+  <div class="head-title">
+    <span class="title-th ml-35">Welcome to Grocery App</span>
+  </div>
+  <ion-img src="../../assets/images/login/LoginBanner.jpg" alt="Login Banner" class="w-full"></ion-img>
 
-  <ion-text color="">
-    <h1>Sign In</h1>
-    <p>to access your addresses, orders and wishlist.</p>
-  </ion-text>
+  <div class="ml-35">
+    <ion-text color="">
+      <h1 class="sign-in text-shadow-gray">Sign In</h1>
+      <p class="text-sm ">to access your addresses, orders and wishlist.</p>
+    </ion-text>
 
-  <div>
-    <p>Let's get you started <span>&#8594;</span></p>
-    <ion-item>
-      <ion-input label="Mobile number" labelPlacement="stacked" placeholder="Enter mobile number"
-        [formControl]="mobileNumberCL"></ion-input>
+  </div>
+  <div class="sign-in-form shadow-md">
+    <p class="text-primary text-shadow-gray">Let's get you started <span>&#8594;</span></p>
+    <ion-item class="bg-default">
+      <div class="w-full bg-default p-0">
+        <ion-input label="Mobile number" labelPlacement="stacked" placeholder="Enter mobile number"
+          [formControl]="mobileNumberCL"></ion-input>
+      </div>
     </ion-item>
+    <!-- <ion-button shape="round" (click)="getOTP()" [disabled]="!mobileNumberCL.valid">Get OTP</ion-button> -->
     <ion-button shape="round" (click)="getOTP()" [disabled]="!mobileNumberCL.valid">Get OTP</ion-button>
   </div>
 
-  <p><a routerLink="/home">Skip</a></p>
+  <p class="text-center underline w-full text-sm text-secondary"><a routerLink="/home">Skip</a></p>
 </ion-content>

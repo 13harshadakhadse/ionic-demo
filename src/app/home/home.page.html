@@ -36,15 +36,15 @@
   </ion-header>
   <ion-content class="ion-no-padding">
     <ion-grid>
-      <ng-container *ngFor="let menu of sideMenus; trackBy: trackBySideMenu">
+      <ng-container *ngFor="let menu of sideMenus">
         <!-- <ion-row>
-        <ion-col offset="2" size="1">
-          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title class="ion-no-padding">My Addresses</ion-title>
-        </ion-col>
-      </ion-row> -->
+      <ion-col offset="2" size="1">
+        <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+      </ion-col>
+      <ion-col size="7">
+        <ion-title class="ion-no-padding">My Addresses</ion-title>
+      </ion-col>
+    </ion-row> -->
         <ion-row (click)="routeToMenu(menu)">
           <ion-col offset="2" size="1">
             <ion-img [src]="menu.image" style="width: 20px; height: 20px;"></ion-img>
@@ -55,21 +55,21 @@
         </ion-row>
         <hr *ngIf="menu?.isShowBottomBorder" style="background-color: black;">
         <!-- <ion-row>
-        <ion-col offset="2" size="1">
-          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title class="ion-no-padding">Customer Support</ion-title>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col offset="2" size="1">
-          <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
-        </ion-col>
-        <ion-col size="7">
-          <ion-title class="ion-no-padding">Logout</ion-title>
-        </ion-col>
-      </ion-row> -->
+      <ion-col offset="2" size="1">
+        <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+      </ion-col>
+      <ion-col size="7">
+        <ion-title class="ion-no-padding">Customer Support</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col offset="2" size="1">
+        <ion-img src="../../assets/images/home/sideMenu/user.png" style="width: 20px; height: 20px;"></ion-img>
+      </ion-col>
+      <ion-col size="7">
+        <ion-title class="ion-no-padding">Logout</ion-title>
+      </ion-col>
+    </ion-row> -->
       </ng-container>
     </ion-grid>
   </ion-content>
@@ -80,11 +80,16 @@
       <ion-buttons slot="start" *ngIf="userDetail?.isLoggedIn">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title class="text-center">Grocery App</ion-title>
+      <!-- <ion-buttons class="text-black" slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons> -->
+      <ion-title class="text-center text-xl ">Grocery App</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-searchbar placeholder="Search products" [debounce]="1000" (ionInput)="searchInput($event)"></ion-searchbar>
+    <ion-searchbar class="rounded-full" placeholder="Search products" [debounce]="1000"
+      (ionInput)="searchInput($event)"></ion-searchbar>
+    <p class="text-base font-bold p-shop-now">Shop Now</p>
     <swiper-container class="banner-slides" [modules]="swiperModules" [loop]="true" [autoplay]="true"
       [pagination]="true">
       <swiper-slide *ngFor="let slide of sliders; trackBy: trackBySlider">
@@ -93,18 +98,18 @@
 
     </swiper-container>
     <div>
-      <h4>All categories</h4>
-      <ion-grid>
+      <h4 class="mt-2 pl-10 text-xl text-bold">All categories</h4>
+      <ion-grid class="padding-t-0">
         <ion-row>
-          <ion-col *ngFor="let cat of categories; trackBy: trackByCategory" size="4" size-md="3">
-            <ion-card class="ion-no-margin" (click)="routeToCategoryProducts()">
-              <ion-card-content class="ion-no-padding text-center">
-                <div>
-                  <ion-img [src]="cat.image"></ion-img>
+          <ion-col *ngFor="let cat of categories; trackBy: trackByCategory" size="4" class="ion-justify-content-center">
+            <ion-card class=" card-ionic shadow-none" (click)="routeToCategoryProducts()">
+              <ion-card-content class="ion-no-padding text-center pb-0">
+                <div class="img-menu">
+                  <ion-img class="h-full w-full" [src]="cat.image"></ion-img>
                 </div>
-                <p>{{cat.name}}</p>
               </ion-card-content>
             </ion-card>
+            <p class="text-13 w-full text-center">{{cat.name}}</p>
           </ion-col>
         </ion-row>
       </ion-grid>
