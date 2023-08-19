@@ -1,56 +1,56 @@
 <ion-content class="ion-padding">
-  <ion-img src="../../assets/images/otp/OTPBanner.png" alt="Otp Banner"></ion-img>
+    <ion-img src="../../assets/images/otp/OTPBanner.png" alt="Otp Banner"></ion-img>
 
-  <ion-text color="">
-    <h1>Enter OTP</h1>
-  </ion-text>
+    <ion-text color="">
+        <h1>Enter OTP</h1>
+    </ion-text>
 
-  <div>
-    <p>An 6 digit code has been sent to <span>&#8594;</span></p>
-    <p>+91 9616502879<span>&#8594;</span></p>
-    <ion-grid>
-      <ion-row class="otp-box">
-        <ion-col>
-          <div>
-            <ion-input name="a" #a (keyup)="moveFocus($event,b,'')" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input name="b" #b (keyup)="moveFocus($event,c,a)" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input name="c" #c (keyup)="moveFocus($event,d,b)" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input name="d" #d (keyup)="moveFocus($event,e,c)" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input name="e" #e (keyup)="moveFocus($event,f,d)" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
+    <div>
+        <p>An 6 digit code has been sent to <span>&#8594;</span></p>
+        <p>+91 9616502870<span>&#8594;</span></p>
+        <ion-grid>
+            <ion-row class="otp-box">
+                <ion-col>
+                    <div>
+                        <ion-input name="a" #a (keyup)="moveFocus($event,b,'')" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ion-input name="b" #b (keyup)="moveFocus($event,c,a)" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ion-input name="c" #c (keyup)="moveFocus($event,d,b)" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ion-input name="d" #d (keyup)="moveFocus($event,e,c)" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                        <ion-input name="e" #e (keyup)="moveFocus($event,f,d)" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+                <ion-col>
 
-          <div>
-            <ion-input name="f" #f (keyup)="moveFocus($event,'',e)" type="tel" placeholder="0" maxlength="1">
-            </ion-input>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+                    <div>
+                        <ion-input name="f" #f (keyup)="moveFocus($event,'',e)" type="tel" placeholder="0" maxlength="1">
+                        </ion-input>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-    <ion-button (click)="goTODashboard()" shape="round">Continue</ion-button>
-  </div>
+        <ion-button (click)="goTODashboard()" shape="round">Continue</ion-button>
+    </div>
 
 </ion-content>
