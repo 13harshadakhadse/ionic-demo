@@ -31,6 +31,7 @@ export class HomePage implements OnInit, OnDestroy {
     private _route: Router,
     private _activated: ActivatedRoute) {
     this.sub.sink = this._userService.userDetail$.subscribe(x => {
+      console.log('userDetail', x);
       this.userDetail = x
     });
   }
@@ -52,19 +53,41 @@ export class HomePage implements OnInit, OnDestroy {
       this.categories = x.cat;
       this.sliders = x.slider;
     },
-      () => {},
+      () => { },
       () => {
         this.categoriesCopy = this._commonService.copyObject(this.categories);
       });
   }
 
   searchInput(event: any) {
-    const searchText = event.target.value.toLowerCase();
-    this.categories = (!!searchText) ? this.categoriesCopy.filter((d) => d.toLowerCase().indexOf(searchText) > -1) : this.categories;
+    const searchText = event?.target?.value?.toLowerCase();
+    this.categories = (!!searchText) ? this.categoriesCopy.filter((d) => d?.name?.toLowerCase()?.indexOf(searchText) > -1) : this.categoriesCopy;
   }
 
   routeToCategoryProducts() {
     this._route.navigate(['category-product'], { relativeTo: this._activated })
+  }
+
+  routeToMenu(menu: SideMenu) {
+    // console.log(menu);
+    if (menu.name === 'Logout') {
+      this._route.navigate([menu.routerLink], { queryParams: { page: 'logout' } });
+    }
+    else {
+      this._route.navigate([menu.routerLink]);
+    }
+  }
+
+  trackBySideMenu(index: number, item: any) {
+    return item.id;
+  }
+
+  trackBySlider(index: number, item: any) {
+    return item.id;
+  }
+
+  trackByCategory(index: number, item: any) {
+    return item.id;
   }
 
   ngOnDestroy(): void {

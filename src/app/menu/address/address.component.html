@@ -1,0 +1,38 @@
+<div class="ion-no-padding">
+  <h4 *ngIf="!isCalledFromCustomerDetail">My Addresses</h4>
+  <ion-card class="ion-no-margin">
+    <ion-card-content [ngClass]="{'ion-no-padding': isCalledFromCustomerDetail}">
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="primary">
+            <ion-label> Addresses </ion-label>
+          </ion-item-divider>
+
+          <ng-container *ngFor="let add of data?.addresses; trackBy: trackByAddress; let i=index; let last=last;">
+            <ion-text>{{add?.customerNameForAddress}}</ion-text>
+            <ion-item *ngIf="!last" id="add_{{i}}">
+              <ion-badge slot="end">{{add?.orderCount}}</ion-badge>
+              <ion-label class="ion-text-wrap">
+                <h6>{{add?.address}}</h6>
+                <p>{{add?.updatedDate | date }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="last" lines="none" id="add_{{i}}">
+              <ion-badge slot="end">{{add?.orderCount}}</ion-badge>
+              <ion-label class="ion-text-wrap">
+                <h6>{{add?.address}}</h6>
+                <p>{{add?.updatedDate | date}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item *ngIf="!!data && data.totalAddresses > 2 && last && !isLoadAllAddresses" lines="none">
+              <ion-text color="primary">
+                <p (click)="loadMoreAddresses()">Load more</p>
+              </ion-text>
+            </ion-item>
+          </ng-container>
+
+        </ion-item-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</div>
