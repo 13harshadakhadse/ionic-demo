@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/service/user.service';
 import { SubSink } from 'subsink/dist/subsink';
@@ -8,19 +8,16 @@ import { SubSink } from 'subsink/dist/subsink';
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss'],
 })
-export class OtpComponent  implements OnInit {
+export class OtpComponent implements OnInit, OnDestroy {
 
   private sub = new SubSink();
 
-  constructor(
-    private route: Router, 
-    private _userService: UserService
-  ) { }
+  constructor(private route: Router,
+    private _userService: UserService) { }
 
-  ngOnInit() {}
-  
+  ngOnInit() { }
 
-  moveFocus(event : any, nextElement : any, previousElement : any) {
+  moveFocus(event: any, nextElement: any, previousElement: any) {
     console.log(event.keyCode);
     if (event.keyCode === 8 && previousElement) {
       previousElement.setFocus();
@@ -37,9 +34,12 @@ export class OtpComponent  implements OnInit {
     }
   }
 
-  goTODashboard()
-  {
+  goTODashboard() {
     this.route.navigate(['/home']);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }
