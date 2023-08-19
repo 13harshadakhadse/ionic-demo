@@ -19,12 +19,54 @@
 @import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+// @import "@ionic/angular/css/padding.css";
+// @import "@ionic/angular/css/float-elements.css";
+// @import "@ionic/angular/css/text-alignment.css";
+// @import "@ionic/angular/css/text-transformation.css";
+// @import "@ionic/angular/css/flex-utils.css";
 
 @import "swiper/scss";
 @import "swiper/scss/navigation";
 @import "swiper/scss/pagination";
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+$primary :#EE574E;
+
+input::placeholder {
+    color: #989595;
+    font-size: 12px !important;
+}
+
+.button-native {
+    background: $primary;
+}
+
+.text-shadow-gray {
+    text-shadow: 0px 3px 3px #b5b3b3;
+}
+
+// text color
+.text-primary {
+    color: $primary
+}
+
+.text-secondary {
+    color: #5C5959;
+}
+
+.text-black {
+    color: #0000;
+}
+
+.text-bold {
+    font-weight: 600;
+    ;
+}
+
+// text size
+.text-13 {
+    font-size: 13px;
+}
